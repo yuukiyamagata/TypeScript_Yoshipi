@@ -1,39 +1,34 @@
-let hasValue = false;
-let count = 10;
-let float = 3.14;
-let negative = -0.12;
-let single = 'hello';
-let double = "hello";
-let back = `hello`;
 
-let hello: string;
-hello = "hello";
+type ClothSize = 'small' | 'medium' | 'large';
+let clothSize : ClothSize = 'large';
 
-const person = {
-  name: {
-    first: 'Jack',
-    last: 'Smith',
-  },
-  age: 21,
+const cloth: {
+  color: string;
+  size: ClothSize
+} = {
+  color: 'white',
+  size: 'medium',
 }
 
-const fruits = ['Apple', 'Lemon', 'Melon'];
-const fruit = fruits[0];
+function sayHello(): void {
+  console.log('hello');
+}
+console.log(sayHello())
 
-const book: [string, number, boolean] = ['business', 1500, false];
+const add = (num1: number, num2:number):number => num1 + num2;
+const doubleNumber = (number: number):number => number * 2;
 
-enum CoffeeSize {
-  SHORT,
-  TALL,
-  GRANDE,
-  VENTI,
+const anotherAdd: (n1: number, n2:number) => number =  add;
+const anotherDoubleNumber:(n1: number) => number = doubleNumber;
+
+function doubleAndHandle(num: number, cb: (num: number) => void) : void {
+  const doubleNumber = cb(num * 2);
+  console.log(doubleNumber);
 }
 
-const coffee = {
-  hot: true,
-  size: CoffeeSize.TALL,
-}
+doubleAndHandle(2, doubleNum => {
+  return doubleAndHandle;
+})
 
-console.log(person.name);
-console.log(CoffeeSize.GRANDE)
-// Object.create() メソッドは、既存のオブジェクトを新しく生成されるオブジェクトのプロトタイプとして使用して、新しいオブジェクトを生成します。
+
+
